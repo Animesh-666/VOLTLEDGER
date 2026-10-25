@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7faf7">
+  <title>Bill calculator — VOLTLEDGER</title>
+  <link rel="icon" type="image/svg+xml" th:href="@{/assets/voltledger-mark.svg}">
+  <link rel="stylesheet" th:href="@{/css/style.css(v=3)}">
+</head>
+<body>
+<div th:replace="~{fragments :: siteHeader('calculator')}"></div>
+<main class="page-background">
+<section class="container page-hero"><div><span class="section-kicker">LIVE JAVA BILLING ENGINE</span><h1>Bill calculator<span class="dot-accent">.</span></h1><p>Enter consumer and meter details. Our Java OOP engine calculates every slab, fixed charge and tax to produce a transparent breakdown.</p></div><span class="status-tag"><i></i> Live Java calculation</span></section>
+<section class="container calculator-layout">
+  <form class="form-card" method="post" th:action="@{/calculator}" th:object="${billForm}" novalidate>
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+    <div class="card-heading"><div class="number-box">01</div><div><h2>Consumer details</h2><p>Information for this bill preview</p></div></div>
+    <div class="field-grid">
+      <label class="field"><span>Consumer ID</span><input type="text" th:field="*{consumerId}" maxlength="30" placeholder="e.g. VL-C1001" required><small class="error" th:if="${#fields.hasErrors('consumerId')}" th:errors="*{consumerId}"></small></label>
+      <label class="field"><span>Consumer name</span><input type="text" th:field="*{consumerName}" maxlength="100" placeholder="Enter full name" required><small class="error" th:if="${#fields.hasErrors('consumerName')}" th:errors="*{consumerName}"></small></label>
+      <label class="field"><span>Meter number</span><input type="text" th:field="*{meterNumber}" maxlength="40" placeholder="e.g. MTR-2026-1001" required><small class="error" th:if="${#fields.hasErrors('meterNumber')}" th:errors="*{meterNumber}"></small></label>
+      <label class="field"><span>Billing category</span><select th:field="*{tariffType}"><option value="RESIDENTIAL">Residential</option><option value="COMMERCIAL">Commercial</option></select><small class="error" th:if="${#fields.hasErrors('tariffType')}" th:errors="*{tariffType}"></small></label>
+      <label class="field field-full"><span>Consumer address</span><input type="text" th:field="*{address}" maxlength="240" placeholder="Street, city, postal code" required><small class="error" th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></small></label>
+    </div>
+    <div class="form-divider"></div>
+    <div class="card-heading"><div class="number-box">02</div><div><h2>Electricity consumption</h2><p>Units consumed during the billing period</p></div></div>
+    <label class="field"><span>Consumed units (kWh)</span><div class="input-suffix"><input type="number" min="0" max="999999999" step="0.01" th:field="*{consumedUnits}" required><span>kWh</span></div><small class="error" th:if="${#fields.hasErrors('consumedUnits')}" th:errors="*{consumedUnits}"></small></label>
+    <div class="helper-box"><span>ⓘ</span><p>Demo rates only. Residential slabs: ₹4 / ₹6 / ₹8 per unit. Commercial slabs: ₹7 / ₹9 / ₹11 per unit. Fixed charges and a sample 5% tax also apply.</p></div>
+    <button class="button button-dark button-wide" type="submit">Calculate electricity bill <span>↗</span></button>
+    <p class="form-footnote">This is a preview, not a real utility invoice. This calculator does not save records. Administrators can sign in to generate saved bills.</p>
+  </form>
+  <aside class="result-panel" aria-live="polite">
+    <div th:if="${bill == null}" class="result-empty"><div class="result-empty-icon">↯</div><span class="section-kicker">READY WHEN YOU ARE</span><h2>Your bill preview<br>appears here.</h2><p>We've included example input values so you can try the live Java calculation with a single click.</p><div class="empty-preview"><span>ENERGY CHARGES</span><div></div><div></div><div class="short"></div><hr><div></div></div></div>
+    <div th:if="${bill != null}" class="result-ready">
+      <div class="result-head"><div><span class="section-kicker">CALCULATION COMPLETE</span><h2>Bill preview</h2></div><span class="result-check">✓</span></div>
+      <div class="result-total"><span>TOTAL PAYABLE</span><strong th:text="|₹${#numbers.formatDecimal(bill.total, 1, 'COMMA', 2, 'POINT')}|">₹1,758.75</strong><small th:text="|${bill.consumedUnits} kWh · ${bill.tariffName} plan|">275 kWh · Residential plan</small></div>
+      <div class="invoice-meta"><div><span>Consumer</span><strong th:text="${bill.consumer.name}">Demo Consumer</strong></div><div><span>Consumer ID</span><strong th:text="${bill.consumer.consumerId}">VL-C1001</strong></div><div><span>Meter number</span><strong th:text="${bill.consumer.meterNumber}">MTR-1001</strong></div><div><span>Preview reference</span><strong th:text="${bill.invoiceNumber}">VL-ABCD1234</strong></div><div><span>Generated</span><strong th:text="${bill.generatedOn}">2026-10-23</strong></div></div>
+      <h3 class="breakdown-title">Charge breakdown</h3>
+      <div class="breakdown-lines"><div class="breakdown-line" th:each="line : ${bill.lines}"><div><b th:text="${line.label}">Slab 1</b><small th:text="|${line.units} units × ₹${line.rate}|">100 × ₹4</small></div><b th:text="|₹${#numbers.formatDecimal(line.amount, 1, 'COMMA', 2, 'POINT')}|">₹400.00</b></div>
+        <div class="breakdown-line"><div><b>Fixed charge</b><small>Based on tariff category</small></div><b th:text="|₹${#numbers.formatDecimal(bill.fixedCharge, 1, 'COMMA', 2, 'POINT')}|">₹75.00</b></div>
+        <div class="breakdown-line"><div><b>Illustrative tax</b><small>5% of subtotal</small></div><b th:text="|₹${#numbers.formatDecimal(bill.tax, 1, 'COMMA', 2, 'POINT')}|">₹83.75</b></div>
+      </div>
+      <div class="grand-total"><span>Final total</span><strong th:text="|₹${#numbers.formatDecimal(bill.total, 1, 'COMMA', 2, 'POINT')}|">₹1,758.75</strong></div>
+      <p class="result-disclaimer">Sample tariff configuration for educational demonstration. This is a preview only; stored invoices are created in the admin workspace.</p>
+      <button type="button" class="button button-outline print-button" data-action="print">Print preview <span>↗</span></button>
+    </div>
+  </aside>
+</section>
+</main>
+<div th:replace="~{fragments :: siteFooter}"></div>
+</body></html>

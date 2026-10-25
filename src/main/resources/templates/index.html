@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7faf7"><meta name="description" content="VOLTLEDGER — transparent, Java-powered electricity billing and modern energy insights.">
+  <title>VOLTLEDGER — Energy billing reimagined</title>
+  <link rel="icon" type="image/svg+xml" th:href="@{/assets/voltledger-mark.svg}">
+  <link rel="stylesheet" th:href="@{/css/style.css(v=3)}">
+</head>
+<body>
+<div th:replace="~{fragments :: siteHeader('home')}"></div>
+<main>
+<section class="hero-section">
+  <div class="hero-aura"></div>
+  <div class="container hero-grid">
+    <div class="hero-copy fade-in">
+      <div class="eyebrow-pill"><span class="pulse-dot"></span> A BETTER WAY TO MANAGE ENERGY <span class="eyebrow-arrow">↗</span></div>
+      <h1>Electricity billing.<br><span class="gradient-text">Beautifully simple.</span></h1>
+      <p class="hero-description">Meet a smarter way to calculate, understand and track electricity costs. Powerful Java logic, transparent slab calculations, and a refreshing experience built around clarity.</p>
+      <div class="hero-actions">
+        <a class="button button-dark" th:href="@{/calculator}">Generate a bill <span>↗</span></a>
+        <a class="button button-outline" th:href="@{/project}">Explore the project <span>→</span></a>
+      </div>
+      <div class="hero-proof"><div class="proof-icons"><span>J</span><span>♢</span><span>✓</span></div><p><strong>Built with Java OOP</strong><br>Accurate, modular, and easy to extend.</p></div>
+    </div>
+    <div class="hero-visual fade-in delayed">
+      <div class="visual-grid"></div><div class="orb orb-one"></div><div class="orb orb-two"></div>
+      <div class="dashboard-mock">
+        <div class="mock-topline"><div class="mock-mini-brand"><span class="mock-bolt">↯</span> Energy overview</div><span class="mock-chip"><i></i> Demo</span></div>
+        <div class="mock-subtitle">Your electricity at a glance</div>
+        <div class="mock-metrics">
+          <div class="mock-metric featured"><span>Estimated bill</span><strong>₹1,758<span>.75</span></strong><small>275 kWh · Residential</small></div>
+          <div class="mock-metric"><span>Consumption</span><strong>275 <em>kWh</em></strong><small>Sample billing period</small></div>
+        </div>
+        <div class="chart-card"><div class="chart-head"><div><b>Energy consumption</b><small>Example monthly data</small></div><span>Last 6 months⌄</span></div>
+          <div class="chart-bars"><div style="--bar:43%"><i></i><span>May</span></div><div style="--bar:64%"><i></i><span>Jun</span></div><div style="--bar:54%"><i></i><span>Jul</span></div><div style="--bar:75%"><i></i><span>Aug</span></div><div style="--bar:62%"><i></i><span>Sep</span></div><div class="selected" style="--bar:86%"><i></i><span>Oct</span></div></div>
+        </div>
+        <div class="mock-bottom"><span><i></i> Calculation preview ready</span><a th:href="@{/calculator}">Try it now ↗</a></div>
+      </div>
+      <div class="floating-card floating-left"><span class="float-symbol">✳</span><div><b>Slab-wise billing</b><small>No hidden calculations</small></div></div>
+      <div class="floating-card floating-right"><span class="check-symbol">✓</span><div><b>100% Java powered</b><small>Real OOP architecture</small></div></div>
+    </div>
+  </div>
+</section>
+<section class="benefit-bar"><div class="container benefit-inner"><div><span class="benefit-symbol">◎</span><b>Fully transparent</b><span>Understand every charge</span></div><div><span class="benefit-symbol">⌘</span><b>Java-first architecture</b><span>Object-oriented by design</span></div><div><span class="benefit-symbol">◈</span><b>Portfolio-ready</b><span>Modern and responsive</span></div></div></section>
+<section class="section features-section" id="features"><div class="container">
+  <div class="section-heading"><div><span class="section-kicker">THE VOLTLEDGER ADVANTAGE</span><h2>Smart by design.<br><span>Simple by nature.</span></h2></div><p>Everything you need to calculate an electricity bill clearly, using meaningful object-oriented Java code behind a clean interface.</p></div>
+  <div class="feature-grid">
+    <article class="feature-card"><span class="feature-icon green">▦</span><h3>Transparent slab billing</h3><p>Every unit is calculated against an explicit tariff slab, with line-by-line visibility into energy charges.</p><span class="feature-note">CALCULATE WITH CONFIDENCE ↗</span></article>
+    <article class="feature-card"><span class="feature-icon blue">◫</span><h3>Clear bill previews</h3><p>Turn consumer details and meter usage into an easy-to-read breakdown of fixed charges, tax and total payable.</p><span class="feature-note">DESIGNED FOR CLARITY ↗</span></article>
+    <article class="feature-card"><span class="feature-icon purple">⌘</span><h3>Genuine Java OOP</h3><p>Classes, encapsulation, inheritance, interfaces and polymorphism power the entire billing engine.</p><span class="feature-note">EXPLORE THE ARCHITECTURE ↗</span></article>
+  </div>
+</div></section>
+<section class="section process-section"><div class="container process-grid"><div><span class="section-kicker">HOW IT WORKS</span><h2>Three steps.<br><span>Complete clarity.</span></h2><p>From consumer information to a calculated bill preview, VOLTLEDGER makes electricity billing approachable.</p><a class="text-link" th:href="@{/calculator}">Launch interactive calculator <span>→</span></a></div>
+  <div class="process-list"><div><span>01</span><section><h3>Enter consumer information</h3><p>Supply a consumer ID, name, meter number and address.</p></section></div><div><span>02</span><section><h3>Select tariff and usage</h3><p>Choose residential or commercial rates and input consumed units.</p></section></div><div><span>03</span><section><h3>Review your breakdown</h3><p>The Java engine calculates slabs, additional charges and final total.</p></section></div></div>
+</div></section>
+<section class="container"><div class="cta-panel"><div class="cta-glow"></div><div><span>READY TO BEGIN?</span><h2>Give every unit<br>a clearer story.</h2><p>Generate an accurate demo calculation in seconds.</p></div><a class="button button-light" th:href="@{/calculator}">Open bill calculator <span>↗</span></a></div></section>
+</main>
+<div th:replace="~{fragments :: siteFooter}"></div>
+</body></html>

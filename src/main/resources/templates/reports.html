@@ -1,0 +1,33 @@
+<!doctype html><html lang="en" xmlns:th="http://www.thymeleaf.org"><body>
+<section th:fragment="trend" class="analytics-grid" aria-label="Billing and energy insights">
+  <div class="analytics-panel">
+    <div class="report-heading"><div><span class="section-kicker">LIVE BILLING INSIGHTS</span><h2>Consumption trends<span class="dot-accent">.</span></h2><p>Sum of generated electricity bills for each of the last six calendar months.</p></div><span class="report-icon">↗</span></div>
+    <div class="bar-chart" role="img" aria-label="Electricity units by billing month over the last six months">
+      <div class="chart-col" th:each="month : ${overview.months}">
+        <div class="chart-value" th:text="|${month.units} kWh|">0 kWh</div>
+        <div class="chart-track"><div class="chart-bar" th:classappend="${month.invoiceCount == 0} ? ' is-empty' : ''" th:style="|height:${month.heightPercent}%|" th:title="|${month.label}: ${month.units} kWh across ${month.invoiceCount} invoice(s), INR ${month.amount}|" ></div></div>
+        <span class="chart-label" th:text="${month.label}">Oct 26</span>
+      </div>
+    </div>
+    <div class="chart-foot"><span><i></i> Consumption in kWh</span><small>Based on saved invoice dates, not live meter readings</small></div>
+  </div>
+  <aside class="insight-panel">
+    <span class="section-kicker">AT A GLANCE</span><h2>Your energy in numbers</h2>
+    <div class="insight-number"><span>TOTAL CONSUMPTION</span><strong th:text="|${#numbers.formatDecimal(overview.totalUnits,1,'COMMA',2,'POINT')} kWh|">0.00 kWh</strong></div>
+    <div class="insight-number"><span>AVERAGE INVOICE</span><strong th:text="|₹${#numbers.formatDecimal(overview.averageInvoice,1,'COMMA',2,'POINT')}|">₹0.00</strong></div>
+    <div class="insight-breakdown"><div><span>Residential bills</span><b th:text="${overview.residentialCount}">0</b></div><div><span>Commercial bills</span><b th:text="${overview.commercialCount}">0</b></div></div>
+    <p class="insight-note">All-time totals. Values are calculated by Java from your stored invoices.</p>
+  </aside>
+</section>
+<section th:fragment="filterBar(actionPath)" class="filter-panel" aria-label="Filter billing history">
+  <div class="filter-title"><div><span class="section-kicker">SEARCH &amp; FILTER</span><h2>Find an invoice</h2></div><span class="filter-results" th:text="|${filteredCount} result(s)|">0 results</span></div>
+  <form class="filter-form" method="get" th:action="${actionPath}">
+    <label class="filter-search"><span>SEARCH RECORDS</span><input type="search" name="q" maxlength="80" th:value="${searchQuery}" placeholder="Invoice, consumer or meter" autocomplete="off"></label>
+    <label><span>TARIFF</span><select name="tariff"><option value="">All tariffs</option><option value="Residential" th:selected="${selectedTariff == 'Residential'}">Residential</option><option value="Commercial" th:selected="${selectedTariff == 'Commercial'}">Commercial</option></select></label>
+    <label><span>FROM</span><input type="date" name="from" th:value="${startDate}"></label>
+    <label><span>TO</span><input type="date" name="to" th:value="${endDate}"></label>
+    <div class="filter-buttons"><button type="submit" class="button button-dark button-small">Apply filters ↗</button><a class="filter-clear" th:href="${actionPath}">Clear</a></div>
+  </form>
+  <p class="alert" th:if="${invalidDates}">The start date must not be later than the end date.</p>
+</section>
+</body></html>

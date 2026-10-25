@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+<header th:fragment="siteHeader(active)" class="site-header">
+  <div class="container header-inner">
+    <a class="brand" th:href="@{/}" aria-label="VOLTLEDGER home">
+      <span class="brand-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m13.3 2-8 11h6l-1 9 9-12h-6.2L13.3 2Z" fill="currentColor"/></svg></span>
+      <span>VOLT<span class="brand-thin">LEDGER</span><small>SMART ENERGY PLATFORM</small></span>
+    </a>
+    <nav class="desktop-nav" aria-label="Main navigation">
+      <a th:href="@{/}" th:classappend="${active == 'home'} ? ' active' : ''">Home</a>
+      <a th:href="@{/calculator}" th:classappend="${active == 'calculator'} ? ' active' : ''">Bill calculator</a>
+      <a th:href="@{/project}" th:classappend="${active == 'project'} ? ' active' : ''">Project overview</a>
+      <a th:href="@{/dashboard}" th:classappend="${active == 'dashboard'} ? ' active' : ''">Dashboard</a>
+    </nav>
+    <a class="button button-dark button-small header-cta" th:href="${signedIn} ? @{/dashboard} : @{/login}"><span th:text="${signedIn} ? 'My workspace' : 'Sign in'"></span> <span aria-hidden="true">↗</span></a>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+  </div>
+  <div class="preview-banner" th:if="${isPreview}">Local preview · Temporary records are cleared when the server restarts · <a th:href="@{/project}">Project details</a></div>
+  <nav class="mobile-nav" id="mobileMenu" aria-label="Mobile navigation" hidden>
+    <a th:href="@{/}">Home</a>
+    <a th:href="@{/calculator}">Bill calculator</a>
+    <a th:href="@{/project}">Project overview</a>
+    <a th:href="@{/dashboard}">Dashboard</a>
+    <a th:href="@{/register}" th:unless="${signedIn}">Create account</a>
+  </nav>
+</header>
+<footer th:fragment="siteFooter" class="footer">
+  <div class="container footer-top">
+    <div><a class="footer-brand" th:href="@{/}">↯ VOLTLEDGER</a><p>Precision in every unit. Transparency in every bill.</p></div>
+    <div><span class="footer-eyebrow">PROJECT</span><p>Java OOP · Spring Boot · Thymeleaf</p><p>College submission / portfolio build</p></div>
+    <div><span class="footer-eyebrow">EXPLORE</span><p><a th:href="@{/calculator}">Bill calculator ↗</a></p><p><a th:href="@{/project}">Architecture ↗</a></p></div>
+  </div>
+  <div class="container footer-bottom"><span>© 2026 VOLTLEDGER · Java OOP + Firebase Firestore</span><span>Illustrative tariffs only · Not a utility-company bill</span></div>
+  <script th:src="@{/js/site.js}" defer></script>
+</footer>
+</body>
+</html>

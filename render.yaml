@@ -1,0 +1,20 @@
+# Optional Render Blueprint; secrets must still be configured in Render dashboard.
+services:
+  - type: web
+    name: voltledger-java
+    runtime: docker
+    plan: free
+    healthCheckPath: /api/live
+    envVars:
+      - key: SPRING_PROFILES_ACTIVE
+        value: firebase,production
+      - key: FIREBASE_PROJECT_ID
+        sync: false
+      - key: GOOGLE_APPLICATION_CREDENTIALS
+        value: /etc/secrets/firebase-service-account.json
+      - key: VL_PUBLIC_REGISTRATION_ENABLED
+        value: "false"
+      - key: VL_BOOTSTRAP_ADMIN_USERNAME
+        value: admin
+      - key: VL_BOOTSTRAP_ADMIN_PASSWORD
+        sync: false

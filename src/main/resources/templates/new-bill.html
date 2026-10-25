@@ -1,0 +1,29 @@
+<!doctype html><html lang="en" xmlns:th="http://www.thymeleaf.org"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Create bill — VOLTLEDGER</title>
+<link rel="icon" th:href="@{/assets/voltledger-mark.svg}"><link rel="stylesheet" th:href="@{/css/style.css(v=3)}"></head><body>
+<div th:replace="~{fragments :: siteHeader('dashboard')}"></div><main class="page-background workspace-main"><div class="container">
+<div class="workspace-top"><div><span class="section-kicker">ADMINISTRATOR / BILL CREATION</span><h1>Generate & save bill<span class="dot-accent">.</span></h1><p>Every monetary figure is recalculated in Java and saved as an immutable invoice snapshot.</p></div><a th:href="@{/admin}" class="button button-outline">← Back to dashboard</a></div>
+<div class="create-layout"><form class="form-card" method="post" th:action="@{/admin/bills}" th:object="${billForm}" novalidate>
+<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+<div th:if="${#fields.hasGlobalErrors()}" class="alert alert-error"><p th:each="error : ${#fields.globalErrors()}" th:text="${error}"></p></div>
+<div class="card-heading"><div class="number-box">01</div><div><h2>Consumer identification</h2><p>Create a new consumer or reuse an existing consumer ID</p></div></div>
+<div class="field-grid">
+  <label class="field field-full"><span>Assigned consumer login</span>
+    <select th:field="*{ownerUsername}" required>
+      <option value="">Select registered consumer account</option>
+      <option th:each="u : ${consumerAccounts}" th:value="${u.username}" th:text="|@${u.username} — ${u.displayName}|"></option>
+    </select>
+    <small class="error" th:if="${#fields.hasErrors('ownerUsername')}" th:errors="*{ownerUsername}"></small>
+    <small>The account must already be registered. <a th:href="@{/admin/consumers}">Manage existing consumer assignments ↗</a></small>
+  </label>
+  <label class="field"><span>Consumer ID</span><input type="text" th:field="*{consumerId}" maxlength="30" required><small class="error" th:if="${#fields.hasErrors('consumerId')}" th:errors="*{consumerId}"></small></label>
+  <label class="field"><span>Consumer name</span><input type="text" th:field="*{consumerName}" maxlength="100" required><small class="error" th:if="${#fields.hasErrors('consumerName')}" th:errors="*{consumerName}"></small></label>
+  <label class="field"><span>Meter number</span><input type="text" th:field="*{meterNumber}" maxlength="40" required><small class="error" th:if="${#fields.hasErrors('meterNumber')}" th:errors="*{meterNumber}"></small></label>
+  <label class="field"><span>Tariff plan</span><select th:field="*{tariffType}"><option value="RESIDENTIAL">Residential</option><option value="COMMERCIAL">Commercial</option></select></label>
+  <label class="field field-full"><span>Address</span><input type="text" th:field="*{address}" maxlength="240" required><small class="error" th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></small></label>
+</div><div class="form-divider"></div>
+<div class="card-heading"><div class="number-box">02</div><div><h2>Electricity consumption</h2><p>Used to generate a saved invoice</p></div></div>
+<label class="field"><span>Consumed units (kWh)</span><input type="number" min="0" max="999999999" step="0.01" th:field="*{consumedUnits}" required><small class="error" th:if="${#fields.hasErrors('consumedUnits')}" th:errors="*{consumedUnits}"></small></label>
+<div class="helper-box"><span>ⓘ</span><p>Illustrative tariffs only: Residential ₹4/₹6/₹8 per kWh; Commercial ₹7/₹9/₹11. Fixed charge and 5% example tax apply.</p></div>
+<button type="submit" class="button button-dark button-wide">Calculate in Java & save to database <span>↗</span></button>
+</form><aside class="info-panel"><span class="section-kicker">HOW IT WORKS</span><h2>More than a calculator.</h2><p>Each saved invoice contains the original billing totals, consumption and line-by-line tariff breakdown.</p><div class="info-flow"><div><span>01</span><b>Validate</b><small>Bean Validation checks user input.</small></div><div><span>02</span><b>Calculate</b><small>Polymorphic Java tariff strategy computes charges.</small></div><div><span>03</span><b>Archive</b><small>Repository saves consumer and invoice records using the active storage mode.</small></div><div><span>04</span><b>Review</b><small>Authorized consumer can view the saved invoice.</small></div></div><p class="info-note">Invoices are private: each invoice belongs to the selected registered consumer. To link an existing consumer to a different account, use Manage consumers first.</p></aside></div>
+</div></main><div th:replace="~{fragments :: siteFooter}"></div></body></html>

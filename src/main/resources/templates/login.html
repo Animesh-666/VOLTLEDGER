@@ -1,0 +1,25 @@
+<!doctype html><html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Sign in — VOLTLEDGER</title>
+<link rel="icon" th:href="@{/assets/voltledger-mark.svg}"><link rel="stylesheet" th:href="@{/css/style.css(v=3)}"></head>
+<body><div th:replace="~{fragments :: siteHeader('dashboard')}"></div>
+<main class="page-background auth-stage"><div class="container auth-layout">
+  <div class="auth-story"><span class="section-kicker">WELCOME TO YOUR ENERGY WORKSPACE</span><h1>Your electricity.<br><span class="gradient-text">In full view.</span></h1>
+  <p>One beautifully simple experience to create, manage and review electricity bills — powered by an actual Java OOP calculation engine.</p>
+  <div class="auth-feature"><span>01</span><div><b>Administrator</b><p>Create and store invoices using our Java billing engine.</p></div></div>
+  <div class="auth-feature"><span>02</span><div><b>Consumer</b><p>Sign in and review bills assigned to your account.</p></div></div>
+  <div class="auth-illustration"><div><small>MONTHLY ENERGY</small><strong>VOLTLEDGER</strong><span>Transparent. Secure. Simple.</span></div><div class="auth-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+  </div>
+  <section class="auth-card"><div class="auth-card-top"><span class="number-box">↗</span><span class="status-tag"><i></i> SECURE MEMBER ACCESS</span></div>
+    <h2>Sign in to VOLTLEDGER</h2><p class="auth-muted">Sign in using your account created for your VOLTLEDGER account.</p>
+    <p class="alert alert-error" th:if="${param.error}">Incorrect username or password.</p>
+    <p class="alert alert-good" th:if="${param.logout}">You've successfully signed out.</p>
+    <form method="post" th:action="@{/login}" class="auth-form">
+      <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+      <label class="field"><span>Username</span><input type="text" name="username" placeholder="Enter your username" required autocomplete="username"></label>
+      <label class="field"><span>Password</span><input type="password" name="password" placeholder="Enter your password" required autocomplete="current-password"></label>
+      <button class="button button-dark button-wide" type="submit">Sign in securely <span>↗</span></button>
+    </form>
+    <p class="alert alert-good" th:if="${registered}" th:text="${registered}"></p>
+    <div class="demo-credentials"><b>NEW TO VOLTLEDGER?</b><p>Consumer accounts can be created online.</p><a class="button button-outline button-small" th:href="@{/register}">Create consumer account ↗</a><small>Administrator accounts are provisioned separately during setup.</small></div>
+  </section>
+</div></main><div th:replace="~{fragments :: siteFooter}"></div></body></html>

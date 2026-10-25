@@ -1,0 +1,17 @@
+.git/
+.github/
+.vscode/
+target/
+*.log
+.env
+.env.*
+*.mv.db
+*.trace.db
+backups/
+*serviceAccount*.json
+*service-account*.json
+*firebase-adminsdk*.json
+firebase-secrets/
+secrets/
+# The Java project needs no JSON build assets; prevent accidentally packaging credentials.
+*.json

@@ -1,0 +1,21 @@
+<!doctype html><html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Create account — VOLTLEDGER</title>
+<link rel="icon" th:href="@{/assets/voltledger-mark.svg}"><link rel="stylesheet" th:href="@{/css/style.css(v=3)}"></head>
+<body><div th:replace="~{fragments :: siteHeader('dashboard')}"></div>
+<main class="page-background auth-stage"><div class="container auth-layout">
+<div class="auth-story"><span class="section-kicker">VOLTLEDGER / CONSUMER ACCESS</span><h1>Energy, in your<br><span class="gradient-text">own hands.</span></h1>
+<p>Create a personal consumer account to securely view only the invoices assigned to your username.</p>
+<div class="auth-feature"><span>01</span><div><b>Private account</b><p>Your password is hashed with BCrypt before storing in the database.</p></div></div>
+<div class="auth-feature"><span>02</span><div><b>Mapped billing</b><p>An administrator links your account to a consumer meter record.</p></div></div>
+<div class="auth-illustration"><div><small>ACCOUNT PROTECTION</small><strong>Built on Java.</strong><span>Role authorization · CSRF protection · JDBC identity</span></div><div class="auth-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+</div><section class="auth-card"><div class="auth-card-top"><span class="number-box">+</span><span class="status-tag"><i></i> Secure registration</span></div>
+<h2>Create consumer account</h2><p class="auth-muted">Registration is for consumers only. Administrator access is granted separately.</p>
+<form class="auth-form" method="post" th:action="@{/register}" th:object="${registrationForm}">
+<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+<label class="field"><span>Full name</span><input th:field="*{displayName}" placeholder="e.g. Aditi Sen" maxlength="100" autocomplete="name" required><small class="error" th:if="${#fields.hasErrors('displayName')}" th:errors="*{displayName}"></small></label>
+<label class="field"><span>Username</span><input th:field="*{username}" placeholder="e.g. aditi_sen" maxlength="30" autocomplete="username" required><small class="error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></small></label>
+<label class="field"><span>Password</span><input type="password" th:field="*{password}" placeholder="12 to 64 characters" minlength="12" maxlength="64" autocomplete="new-password" required><small class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></small></label>
+<label class="field"><span>Confirm password</span><input type="password" th:field="*{confirmPassword}" placeholder="Confirm password" autocomplete="new-password" required><small class="error" th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}"></small></label>
+<button class="button button-dark button-wide" type="submit">Create my account <span>↗</span></button></form>
+<div class="demo-credentials"><b>ALREADY REGISTERED?</b><p><a th:href="@{/login}">Return to sign in ↗</a></p><small>For project testing, use fictional consumer names and meter information.</small></div>
+</section></div></main><div th:replace="~{fragments :: siteFooter}"></div></body></html>

@@ -1,0 +1,25 @@
+target/
+.idea/
+.vscode/
+.settings/
+.classpath
+.project
+*.iml
+*.log
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db
+backups/
+*.mv.db
+*.trace.db
+*.bak
+# Never commit Firebase Admin credentials or service account private keys.
+*serviceAccount*.json
+*service-account*.json
+*firebase-adminsdk*.json
+firebase-secrets/
+secrets/
+# This repository does not track JSON source files. Blocks arbitrary service-account filenames.
+*.json
