@@ -10,6 +10,12 @@ A full-stack **Java OOP** college project with a premium Clean Energy interface,
 **Java 21** · **Spring Boot 4.1.1** · **Spring Security** · **Thymeleaf** · **Firebase Cloud Firestore** · **PDFBox**
 
 **Current stage: v1.0.0-rc1 — release candidate.** Not yet a verified public production deployment.
+
+### 🌐 Live Deployment
+
+[🚀 Live Demo](https://voltledger-java.onrender.com/)
+
+[💻 GitHub Repository](https://github.com/Animesh-666/VOLTLEDGER)
 </div>
 
 ---
