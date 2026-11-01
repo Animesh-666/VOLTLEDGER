@@ -5,20 +5,38 @@
 
 ### Smart Electricity Billing & Energy Analytics
 
-A full-stack **Java OOP** college project with a premium Clean Energy interface, Firestore persistence, accurate tariff calculations, role-based access, energy analytics and downloadable PDFs.
+A full-stack **Java OOP** college project with a cinematic Chrome Edition dark interface, Firestore persistence, accurate tariff calculations, role-based access, energy analytics and downloadable PDFs.
 
 **Java 21** · **Spring Boot 4.1.1** · **Spring Security** · **Thymeleaf** · **Firebase Cloud Firestore** · **PDFBox**
 
-**Current stage: v1.0.0-rc1 — release candidate.** Not yet a verified public production deployment.
+**Chrome Edition v1.1.1 — refined cinematic frontend with floating glass navigation, luminous curved CTAs and premium dashboards.** The project owner reports successful live tests; this is not a certified electricity-provider billing service.
 
-### 🌐 Live Deployment
+[![VOLTLEDGER Java CI](https://github.com/Animesh-666/VOLTLEDGER/actions/workflows/ci.yml/badge.svg)](https://github.com/Animesh-666/VOLTLEDGER/actions/workflows/ci.yml)
 
-[🚀 Live Demo](https://voltledger-java.onrender.com/)
-
-[💻 GitHub Repository](https://github.com/Animesh-666/VOLTLEDGER)
+[**Live demo**](https://voltledger-java.onrender.com/) · [**Source code**](https://github.com/Animesh-666/VOLTLEDGER) · [**Release notes**](docs/RELEASE_NOTES.md) · [**Portfolio showcase**](docs/PORTFOLIO_SHOWCASE.md)
 </div>
 
 ---
+
+## Refined interface v1.1.1
+
+- Frosted, floating glass navigation with illuminated Sign In action and improved mobile dropdown.
+- More balanced, smaller hero typography and improved desktop/mobile CTA positioning.
+- Rounded metal/glass buttons with a bright hover sweep, visible focus outlines and reduced-motion support.
+- Elevated dashboard metrics and content panels with subtle chrome reflections and hover depth.
+- Styling remains self-hosted; Java, Firebase, security controls and bill calculations are unchanged.
+
+See [Interface Refinement Guide](docs/INTERFACE_REFINEMENT.md) for upgrade and testing instructions.
+
+## What's new in the Chrome Edition
+
+- Reference-inspired immersive dark landing page with moving silver/chrome WebGL forms and a static SVG fallback.
+- Clearly visible **Sign in** navigation and redesigned secure login experience.
+- Dark unified styling for bill calculator, dashboards, analytics, forms and invoice views.
+- Local JS/CSS assets only (preserves Spring Security CSP); reduced-motion accessibility and responsive mobile layouts.
+- No React migration or API rewrite: existing Java Spring Boot + Thymeleaf routes and Firebase functionality remain unchanged.
+
+See [Chrome Edition upgrade guide](docs/CHROME_EDITION.md).
 
 ## What it does
 
@@ -118,6 +136,8 @@ Residential, 275 kWh:
 - [Security and environment controls](docs/SECURITY.md)
 - [Release test checklist](docs/RELEASE_ACCEPTANCE.md)
 - [Release notes](docs/RELEASE_NOTES.md)
+- [Portfolio/demo guide](docs/PORTFOLIO_SHOWCASE.md)
+- [Final project handoff](docs/PROJECT_HANDOFF.md)
 - [Java OOP viva guide](docs/VIVA_PREPARATION.md)
 - [Architecture notes](docs/ARCHITECTURE.md)
 - [College report](docs/COLLEGE_REPORT.md)
@@ -130,7 +150,7 @@ A `Dockerfile`, optional `render.yaml` and GitHub Actions workflow are included.
 mvn clean verify
 ```
 
-GitHub Actions runs Maven verification on pushes/PRs. A successful local build and live Render smoke test are **not** claimed by this archive; they must be completed before tagging a stable `v1.0.0` release. Use synthetic data for demonstrations, monitor Firestore quotas and add pagination/rate limiting before using with large numbers of accounts.
+GitHub Actions runs Maven verification on pushes/PRs. Candidate CI passed, and the project owner reports successful live-site verification. After pushing the stable-version commit, confirm its CI is green before publishing the GitHub Release tag. Use synthetic data for demonstrations, monitor Firestore quotas, and add pagination, abuse controls and recovery procedures before handling real-world sensitive data.
 
 ## License and attribution
 

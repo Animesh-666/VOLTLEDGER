@@ -1,6 +1,6 @@
 <!doctype html><html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Manage consumers — VOLTLEDGER</title>
-<link rel="icon" th:href="@{/assets/voltledger-mark.svg}"><link rel="stylesheet" th:href="@{/css/style.css(v=3)}"></head>
+<link rel="icon" th:href="@{/assets/voltledger-mark.svg}"><link rel="stylesheet" th:href="@{/css/style.css(v=3)}"><link rel="stylesheet" th:href="@{/css/chrome-theme.css(v=2)}"></head>
 <body><div th:replace="~{fragments :: siteHeader('dashboard')}"></div><main class="page-background workspace-main"><div class="container">
 <div class="workspace-top"><div><span class="section-kicker">ADMIN / CUSTOMER MANAGEMENT</span><h1>Consumer accounts<span class="dot-accent">.</span></h1><p>Assign meter records to registered consumer usernames. Historical invoices stay attached to the original meter record.</p></div><div class="workspace-actions"><a th:href="@{/admin}" class="button button-outline">← Dashboard</a><a th:href="@{/admin/consumers/new}" class="button button-dark">+ Add consumer</a><a th:href="@{/admin/bills/new}" class="button button-outline">New bill ↗</a></div></div>
 <p class="alert alert-good" th:if="${success}" th:text="${success}"></p>

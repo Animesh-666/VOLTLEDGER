@@ -1,5 +1,5 @@
 <!doctype html><html lang="en" xmlns:th="http://www.thymeleaf.org"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Add consumer — VOLTLEDGER</title>
-<link rel="icon" th:href="@{/assets/voltledger-mark.svg}"><link rel="stylesheet" th:href="@{/css/style.css(v=3)}"></head><body>
+<link rel="icon" th:href="@{/assets/voltledger-mark.svg}"><link rel="stylesheet" th:href="@{/css/style.css(v=3)}"><link rel="stylesheet" th:href="@{/css/chrome-theme.css(v=2)}"></head><body>
 <div th:replace="~{fragments :: siteHeader('dashboard')}"></div><main class="page-background workspace-main"><div class="container">
 <div class="workspace-top"><div><span class="section-kicker">ADMIN / CONSUMER RECORD</span><h1>Add a consumer<span class="dot-accent">.</span></h1><p>Create a consumer and link their meter to a registered account before generating invoices.</p></div><a class="button button-outline" th:href="@{/admin/consumers}">← Manage consumers</a></div>
 <div class="create-layout"><form class="form-card" method="post" th:action="@{/admin/consumers/new}" th:object="${consumerRecordForm}">

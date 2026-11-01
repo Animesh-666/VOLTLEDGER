@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1000" fill="none" aria-hidden="true">
+  <defs>
+    <linearGradient id="metal" x1="190" y1="280" x2="990" y2="730" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#161820"/><stop offset=".10" stop-color="#f9faff"/><stop offset=".20" stop-color="#787b8a"/><stop offset=".31" stop-color="#101218"/><stop offset=".40" stop-color="#e0e5ed"/><stop offset=".49" stop-color="#3e414e"/><stop offset=".56" stop-color="#f7f8fd"/><stop offset=".64" stop-color="#6c707e"/><stop offset=".71" stop-color="#101117"/><stop offset=".80" stop-color="#dde1e9"/><stop offset=".88" stop-color="#646876"/><stop offset="1" stop-color="#f8faff"/>
+    </linearGradient>
+    <linearGradient id="edge" x1="180" y1="240" x2="1040" y2="840" gradientUnits="userSpaceOnUse"><stop stop-color="#fafcff"/><stop offset=".4" stop-color="#20232c"/><stop offset=".8" stop-color="#dce0eb"/><stop offset="1" stop-color="#383c46"/></linearGradient>
+    <radialGradient id="halo"><stop stop-color="#8e92a8" stop-opacity=".3"/><stop offset="1" stop-color="#8e92a8" stop-opacity="0"/></radialGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="21"/></filter>
+  </defs>
+  <ellipse cx="650" cy="510" rx="480" ry="420" fill="url(#halo)"/>
+  <path d="M725 130C956 65 1091 339 838 437S588 609 808 704C1004 787 660 995 471 778C276 565 434 449 235 544C-14 661 186 189 471 285C728 372 750 236 725 130Z" stroke="#e4e7f9" stroke-opacity=".27" stroke-width="112" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)"/>
+  <path d="M725 130C956 65 1091 339 838 437S588 609 808 704C1004 787 660 995 471 778C276 565 434 449 235 544C-14 661 186 189 471 285C728 372 750 236 725 130Z" stroke="#14141c" stroke-width="104" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M725 130C956 65 1091 339 838 437S588 609 808 704C1004 787 660 995 471 778C276 565 434 449 235 544C-14 661 186 189 471 285C728 372 750 236 725 130Z" stroke="url(#metal)" stroke-width="92" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M725 130C956 65 1091 339 838 437S588 609 808 704C1004 787 660 995 471 778C276 565 434 449 235 544C-14 661 186 189 471 285C728 372 750 236 725 130Z" stroke="url(#edge)" stroke-opacity=".83" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" transform="translate(-18 -15)"/>
+  <path d="M725 130C956 65 1091 339 838 437S588 609 808 704C1004 787 660 995 471 778C276 565 434 449 235 544C-14 661 186 189 471 285C728 372 750 236 725 130Z" stroke="#fff" stroke-opacity=".36" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" transform="translate(19 20)"/>
+</svg>

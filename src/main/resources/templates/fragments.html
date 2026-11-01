@@ -1,38 +1,31 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<body>
-<header th:fragment="siteHeader(active)" class="site-header">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"><body>
+<header th:fragment="siteHeader(active)" class="site-header" id="site-header">
   <div class="container header-inner">
-    <a class="brand" th:href="@{/}" aria-label="VOLTLEDGER home">
-      <span class="brand-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m13.3 2-8 11h6l-1 9 9-12h-6.2L13.3 2Z" fill="currentColor"/></svg></span>
-      <span>VOLT<span class="brand-thin">LEDGER</span><small>SMART ENERGY PLATFORM</small></span>
-    </a>
+    <a class="brand" th:href="@{/}" aria-label="VOLTLEDGER home"><span class="brand-icon" aria-hidden="true">ϟ</span><span>VOLT<span class="brand-thin">LEDGER</span><small>SMART ENERGY / JAVA POWERED</small></span></a>
     <nav class="desktop-nav" aria-label="Main navigation">
       <a th:href="@{/}" th:classappend="${active == 'home'} ? ' active' : ''">Home</a>
-      <a th:href="@{/calculator}" th:classappend="${active == 'calculator'} ? ' active' : ''">Bill calculator</a>
-      <a th:href="@{/project}" th:classappend="${active == 'project'} ? ' active' : ''">Project overview</a>
-      <a th:href="@{/dashboard}" th:classappend="${active == 'dashboard'} ? ' active' : ''">Dashboard</a>
+      <a th:href="@{/#capabilities}">Capabilities</a>
+      <a th:href="@{/calculator}" th:classappend="${active == 'calculator'} ? ' active' : ''">Calculator</a>
+      <a th:href="@{/project}" th:classappend="${active == 'project'} ? ' active' : ''">Architecture</a>
     </nav>
-    <a class="button button-dark button-small header-cta" th:href="${signedIn} ? @{/dashboard} : @{/login}"><span th:text="${signedIn} ? 'My workspace' : 'Sign in'"></span> <span aria-hidden="true">↗</span></a>
+    <div class="nav-actions"><a class="nav-outline-link" th:href="@{/calculator}">Explore demo <span aria-hidden="true">↗</span></a><a class="button button-dark button-small header-cta" th:href="${signedIn} ? @{/dashboard} : @{/login}"><span th:text="${signedIn} ? 'Dashboard' : 'Sign in'">Sign in</span><span aria-hidden="true">↗</span></a></div>
     <button class="menu-toggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
   </div>
-  <div class="preview-banner" th:if="${isPreview}">Local preview · Temporary records are cleared when the server restarts · <a th:href="@{/project}">Project details</a></div>
+  <div class="preview-banner" th:if="${isPreview}">PREVIEW MODE / Temporary records reset after restart</div>
   <nav class="mobile-nav" id="mobileMenu" aria-label="Mobile navigation" hidden>
-    <a th:href="@{/}">Home</a>
-    <a th:href="@{/calculator}">Bill calculator</a>
-    <a th:href="@{/project}">Project overview</a>
-    <a th:href="@{/dashboard}">Dashboard</a>
-    <a th:href="@{/register}" th:unless="${signedIn}">Create account</a>
+    <a th:href="@{/}">Home</a><a th:href="@{/#capabilities}">Capabilities</a><a th:href="@{/calculator}">Calculator</a><a th:href="@{/project}">Architecture</a>
+    <a th:href="${signedIn} ? @{/dashboard} : @{/login}" th:text="${signedIn} ? 'Go to dashboard ↗' : 'Sign in ↗'">Sign in ↗</a>
   </nav>
 </header>
 <footer th:fragment="siteFooter" class="footer">
   <div class="container footer-top">
-    <div><a class="footer-brand" th:href="@{/}">↯ VOLTLEDGER</a><p>Precision in every unit. Transparency in every bill.</p></div>
-    <div><span class="footer-eyebrow">PROJECT</span><p>Java OOP · Spring Boot · Thymeleaf</p><p>College submission / portfolio build</p></div>
-    <div><span class="footer-eyebrow">EXPLORE</span><p><a th:href="@{/calculator}">Bill calculator ↗</a></p><p><a th:href="@{/project}">Architecture ↗</a></p></div>
+    <div><a class="footer-brand" th:href="@{/}">ϟ VOLTLEDGER</a><p>Every unit has a story.<br>Every number has a reason.</p></div>
+    <div><span class="footer-eyebrow">BUILT WITH</span><p>Java 21 / Spring Boot</p><p>Firebase / Thymeleaf / Render</p></div>
+    <div><span class="footer-eyebrow">EXPLORE</span><p><a th:href="@{/calculator}">Try the calculator ↗</a></p><p><a th:href="@{/login}">Sign in ↗</a></p><p><a href="https://github.com/Animesh-666/VOLTLEDGER" rel="noopener noreferrer" target="_blank">Source on GitHub ↗</a></p></div>
   </div>
-  <div class="container footer-bottom"><span>© 2026 VOLTLEDGER · Java OOP + Firebase Firestore</span><span>Illustrative tariffs only · Not a utility-company bill</span></div>
+  <div class="container footer-bottom"><span>© 2026 VOLTLEDGER · TECHNOLOGY IN MOTION</span><span>Academic project / illustrative tariffs only</span></div>
   <script th:src="@{/js/site.js}" defer></script>
+  <script th:src="@{/js/chrome-scene.js}" defer></script>
 </footer>
-</body>
-</html>
+</body></html>

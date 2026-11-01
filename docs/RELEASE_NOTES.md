@@ -1,25 +1,36 @@
-# v1.0.0-rc1 — Phase 6 Candidate (2026-10-25)
+# VOLTLEDGER v1.0.0 — Stable College & Portfolio Release
 
-## Included
+**Release date:** 25 October 2026  
+**Live website:** https://voltledger-java.onrender.com/  
+**Repository:** https://github.com/Animesh-666/VOLTLEDGER
 
-- Existing Firebase Java OOP billing application with clean responsive frontend
-- Java server-side progressive tariff calculations and PDF exports
-- Firestore-backed accounts, consumers, invoices, analytics and ownership rules
-- Corrected `FirestoreCalls` exception unwrapping for duplicate consumer/meter inputs
-- Production / Render profile guards, to prevent accidental preview storage deployments
-- Configurable public sign-up: disabled by default in `production`
-- Brand-matched 403/404/500 HTML error templates and generic server-side error messages
-- `/api/live` lightweight host health check; `/api/health` Firestore connectivity cached for 60 seconds
-- Docker image with unprivileged user and group 1000 for Render secret files
-- Optional `render.yaml`, CI, deployment runbook and release acceptance checklist
+## Features delivered
 
-## Verification boundaries
+- **Java OOP billing:** residential and commercial progressive tariff strategies, validated consumer and meter details, fixed charges and illustrative tax using `BigDecimal`.
+- **Clean Energy frontend:** responsive landing page, calculator, login, administration and consumer pages.
+- **Accounts and authorization:** Spring Security, BCrypt, ADMIN/CONSUMER roles and consumer-specific invoice permissions.
+- **Firestore data:** server-side Firebase Admin SDK persistence for users, consumers, meter index and invoices.
+- **Billing experience:** searchable history, analytics dashboard and Java PDFBox invoice exports.
+- **Delivery:** Java 21/Maven build, GitHub Actions CI, Docker and Render with runtime Firebase Secret Files.
 
-Source consistency and ZIP integrity checked in the build environment. `mvn clean verify`, Docker build, Firebase live smoke tests and public Render deployment **must be executed separately**. No live site, tag or repository release is created by this ZIP.
+## Demonstration calculation
+
+275 units residential: 100 × ₹4 + 100 × ₹6 + 75 × ₹8 = ₹1,600 energy charges; ₹75 fixed charge; ₹83.75 illustrative tax; **₹1,758.75 total**.
+
+## Verification
+
+The release candidate's Maven GitHub Actions CI passed at commit `8b5b9b40fe166d775342e83f35e65698cffb71ec`. The project owner reports completing live checks of the deployed project. Check CI again on the new v1.0.0 source commit before publishing the GitHub Release. This educational product has not had an independent security, compliance or utility certification audit.
 
 ## Known limitations
 
-- Open public registration needs abuse controls for long-term public use.
-- Firestore invoice searches currently read collections into memory, suitable for a small college demo but not large-scale production data.
-- Managed Firestore export/backup and recovery planning may require a billing-enabled Firebase project.
-- Illustrative tariffs are not official real-world electricity rates.
+- Tariffs are fictitious examples, not official provider rates; no real payment processing or certified legal invoices.
+- Firestore history currently enumerates small demo collections; indexed queries/pagination are required at scale.
+- Public registration should remain restricted without account abuse protection.
+- Additional monitoring, password recovery, audit trails and backup/restore procedures are needed for real use.
+- Render Free may sleep during periods of inactivity.
+
+## Next ideas
+
+Configurable real-world tariff sources, multi-language PDF bills, optional bill forecasting and service notifications.
+
+See [Security](SECURITY.md), [Final handoff](PROJECT_HANDOFF.md), [Architecture](ARCHITECTURE.md) and [College report](COLLEGE_REPORT.md).
