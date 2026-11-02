@@ -18,7 +18,7 @@ A full-stack **Java OOP** college project with a cinematic Chrome Edition dark i
 
 ---
 
-## Refined interface v1.1.1
+## Refined interface v1.1.1.
 
 - Frosted, floating glass navigation with illuminated Sign In action and improved mobile dropdown.
 - More balanced, smaller hero typography and improved desktop/mobile CTA positioning.
